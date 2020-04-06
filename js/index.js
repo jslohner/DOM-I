@@ -42,10 +42,8 @@ const siteContent = {
 // links
 let nav = document.querySelector('nav');
 let navLinks = document.querySelectorAll('nav a');
-let navContents = Object.values(siteContent.nav);
-for (let i = 0; i < navLinks.length; i++) {
-	navLinks[i].textContent = navContents[i];
-}
+let navContents = Object.values(siteContent['nav']);
+navLinks.forEach((link, index) => link.textContent = navContents[index]);
 
 // logo
 let logo = document.getElementById('logo-img');
@@ -62,10 +60,50 @@ title.textContent = siteContent.cta.h1;
 titleButton.textContent = siteContent.cta.button;
 
 // cta img
-let ctaImg = document.getElementById('cta-img');
+let ctaImg = document.querySelector('#cta-img');
 ctaImg.setAttribute('src', siteContent['cta']['img-src']);
 
 
 
-// // main content
-// let mainContent = document.getElementsByClassName('main-content')
+// main content
+
+// text content
+let mainContent = document.querySelectorAll('.main-content .text-content');
+let mainContentTitles = document.querySelectorAll('.main-content .text-content h4');
+let mainContentParagraphs = document.querySelectorAll('.main-content .text-content p');
+let mainContentKeys = Object.keys(siteContent['main-content']);
+let mainContentTitleValues = [];
+let mainContentParagraphValues = [];
+mainContentKeys.forEach((key, index) => {
+	if (key.includes('h4')) {
+		mainContentTitleValues.push(key)
+	}
+	else if (key.includes('content')) {
+		mainContentParagraphValues.push(key);
+	}
+})
+for (let i = 0; i < mainContent.length; i++) {
+	mainContentTitles[i].textContent = siteContent['main-content'][mainContentTitleValues[i]];
+	mainContentParagraphs[i].textContent = siteContent['main-content'][mainContentParagraphValues[i]];
+}
+
+// middle img
+let mainContentImg = document.querySelector('img#middle-img');
+mainContentImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
+
+
+
+// contact section
+
+// text content
+let contactSection = document.querySelector('.contact').querySelectorAll('h4, p');
+let contactSectionContent = Object.values(siteContent['contact']);
+contactSection.forEach((value, index) => contactSection[index].textContent = contactSectionContent[index]);
+
+
+
+// footer
+
+// text content
+let copyrightSection = document.querySelector('footer p');
+copyrightSection.textContent = siteContent['footer']['copyright'];
