@@ -49,6 +49,21 @@ navLinks.forEach((link, index) => link.textContent = navContents[index]);
 let logo = document.getElementById('logo-img');
 logo.setAttribute('src', navContents[navContents.length - 1]);
 
+// new links
+let justin = document.createElement('a');
+justin.href = '#justin';
+justin.textContent = 'Justin';
+justin.style.color = 'green';
+nav.appendChild(justin);
+
+let lambda = document.createElement('a');
+lambda.href = 'https://lambdaschool.com/';
+lambda.textContent = 'Lambda School';
+lambda.style.color = 'green';
+nav.prepend(lambda);
+
+// link styles
+navLinks.forEach(link => link.style.color = 'green');
 
 
 // cta
@@ -56,8 +71,14 @@ logo.setAttribute('src', navContents[navContents.length - 1]);
 // title
 let title = document.querySelector('.cta .cta-text h1');
 let titleButton = document.querySelector('.cta .cta-text button');
-title.textContent = siteContent.cta.h1;
-titleButton.textContent = siteContent.cta.button;
+titleButton.textContent = siteContent['cta']['button'];
+let titleArray = siteContent['cta']['h1'].split(' ');
+let newTitleArray = titleArray.map(str => document.createTextNode(str));
+newTitleArray.splice(1, 0, document.createElement('br'));
+newTitleArray.splice(3, 0, document.createElement('br'))
+newTitleArray.forEach(element => title.appendChild(element));
+
+
 
 // cta img
 let ctaImg = document.querySelector('#cta-img');
