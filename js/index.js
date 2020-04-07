@@ -78,8 +78,6 @@ newTitleArray.splice(1, 0, document.createElement('br'));
 newTitleArray.splice(3, 0, document.createElement('br'))
 newTitleArray.forEach(element => title.appendChild(element));
 
-
-
 // cta img
 let ctaImg = document.querySelector('#cta-img');
 ctaImg.setAttribute('src', siteContent['cta']['img-src']);
